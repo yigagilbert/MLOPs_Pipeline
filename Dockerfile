@@ -19,7 +19,12 @@ COPY app.py .
 COPY data_validation.py .
 
 # Copy model files
-COPY best_resnext.pth .
+# COPY best_resnext.pth .
+# Download the model from Dropbox
+RUN apt-get update && apt-get install -y wget && \
+    wget -O best_resnext.pth "https://www.dropbox.com/scl/fi/eugcs5a9g017kr1tjqac1/best_resnext.pth?rlkey=6ma68mxoxwquv0sm4enad0ucf&st=2yrfhcft&dl=1" && \
+    apt-get remove -y wget && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
+
 COPY exported_model/ ./exported_model/
 
 # Create directories for MLflow and metrics
