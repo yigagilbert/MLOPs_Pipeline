@@ -1,0 +1,15 @@
+artifact_uri: /Users/sunbird/Documents/Workshop/Apps/MLOPs_Pipeline/mlruns/0/769b73470f784f47a805983b9cd69ea7/artifacts
+end_time: 1741758848897
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 769b73470f784f47a805983b9cd69ea7
+run_name: resnext_production_model
+run_uuid: 769b73470f784f47a805983b9cd69ea7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1741758840940
+status: 3
+tags: []
+user_id: sunbird

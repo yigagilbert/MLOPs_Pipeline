@@ -1,0 +1,50 @@
+# Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+env/
+.venv/
+ENV/
+.env/
+
+# Jupyter Notebooks checkpoints
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# IDE config files
+.vscode/
+.idea/
+
+# Dataset files
+data/
+*.csv
+*.json
+*.h5
+
+# Model checkpoints
+model/
+*.ckpt
+*.h5
+*.pkl
+*.pth
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Python coverage reports
+.coverage
+*.cover
+
+# Build directories
+build/
+dist/
+
+# Test directories
+tests/__pycache__/

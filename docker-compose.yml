@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  model-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dementia-detection-api
+    ports:
+      - "8080:8080"  # FastAPI
+      - "8000:8000"  # Prometheus metrics
+    volumes:
+      - ./data:/app/data
+      - ./mlruns:/app/mlruns
+      - ./logs:/app/logs
+    restart: unless-stopped
+    environment:
+      - MODEL_PATH=exported_model/model.pt
+      - LOG_LEVEL=INFO
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    restart: unless-stopped
+    depends_on:
+      - model-api
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+    restart: unless-stopped
+    depends_on:
+      - prometheus
+
+volumes:
+  prometheus_data:
+  grafana_data:
