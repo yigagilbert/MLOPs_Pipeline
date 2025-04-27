@@ -26,6 +26,7 @@ RUN apt-get update && apt-get install -y wget && \
     apt-get remove -y wget && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
 
 COPY exported_model/ ./exported_model/
+RUN python export_model.py
 
 # Create directories for MLflow and metrics
 RUN mkdir -p mlruns
