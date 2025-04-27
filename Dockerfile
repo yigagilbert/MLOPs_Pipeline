@@ -12,6 +12,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Upgrade pip
 RUN pip install --upgrade pip
 
+RUN pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cpu
+
 # Copy requirements first for better layer caching
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
